@@ -1,5 +1,3 @@
-<!--カレンダー-->
-
 <%= form_with model: @plan, url: calendars_path, class: 'form' do |f| %>
   <%= f.label :日付を選択, class: 'lavel' %>
   <%= f.date_field :date, class: 'date-select' %>
@@ -7,14 +5,12 @@
   <%= f.text_field :plan, class: 'text-input' %>
   <%= f.submit '保存' %>
 <% end %>
-
-<!--表-->
 <div class='calendar'>
   <% @week_days.each do |day| %>
     <div class='item'>
-      <!--日付-->
-      <% day[:month] %>/<% day[:date] %>
-      <!--list-->
+      <div class='date'>
+        <%= day[:month] %>/<%= day[:date] %><%= day[:wdays] %>
+      </div>
       <ul class='content'>
       <% if day[:plans].length != 0 %>
         <% day[:plans].each do |plan| %>
